@@ -7,7 +7,8 @@
     "test": "jest --coverage",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "start": "webpack --mode development --config webpack.config.js --watch",
+    "start": "webpack serve --open",
+    "watch": "webpack --mode development --config webpack.config.js --watch",
     "deploy": "webpack --mode production && gh-pages -d dist"
   },
   "repository": {
