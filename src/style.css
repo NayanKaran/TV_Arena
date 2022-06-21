@@ -6,14 +6,19 @@
 body {
   background-image: url('./images/bg-desktop.jpg');
   background-repeat: no-repeat;
-  padding-top: 24px;
+  color: #fff;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 64px;
+  padding: 24px 64px;
+  margin-bottom: 24px;
+  background-color: rgba(53,149,218, 0.2);
 }
 
 .heading {
@@ -40,6 +45,7 @@ body {
 
 .list-item a:hover {
   color: #007aff;
+  transition-timing-function: ease-in-out;
 }
 
 .nav {
@@ -60,4 +66,40 @@ body {
 #search-form button:active{
   color: #fff;
   background-color: #007aff;
+}
+
+#home-page {
+  display: grid;
+  grid-template-columns: 360px 360px 360px;
+  gap: 24px;
+  justify-content: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-img {
+  width: 360px;
+  height: 420px;
+}
+
+.likes {
+  color: white;
+}
+
+.likes:active {
+  color: red;
+}
+
+.socials {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.count-likes {
+  display: flex;
+  justify-content: end;
 }
