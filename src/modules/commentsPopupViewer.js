@@ -1,3 +1,3 @@
-export default showCommentsPopUp() {
+// export default showCommentsPopUp() {
 
-}
+// }
