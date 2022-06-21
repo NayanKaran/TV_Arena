@@ -18,7 +18,7 @@ body {
   align-items: center;
   padding: 24px 64px;
   margin-bottom: 24px;
-  background-color: rgba(53,149,218, 0.2);
+  background-color: rgba(53, 149, 218, 0.2);
 }
 
 .heading {
@@ -53,7 +53,7 @@ body {
   gap: 16px;
 }
 
-#search-form input{
+#search-form input {
   padding: 4px;
   border-radius: 4px;
 }
@@ -63,7 +63,7 @@ body {
   transition-property: color;
 }
 
-#search-form button:active{
+#search-form button:active {
   color: #fff;
   background-color: #007aff;
 }
