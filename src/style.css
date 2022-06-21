@@ -47,7 +47,7 @@ body {
   gap: 16px;
 }
 
-#search-form input{
+#search-form input {
   padding: 4px;
   border-radius: 4px;
 }
@@ -57,7 +57,7 @@ body {
   transition-property: color;
 }
 
-#search-form button:active{
+#search-form button:active {
   color: #fff;
   background-color: #007aff;
 }
