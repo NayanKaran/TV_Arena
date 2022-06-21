@@ -1,2 +1,2 @@
 import './style.css';
-import './modules/commentsPopupController.js'
+import './modules/commentsPopupController.js';
