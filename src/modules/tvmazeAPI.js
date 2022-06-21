@@ -2,8 +2,8 @@ export async function getShowDetails(ID) {
   const response = await fetch(
     `https://api.tvmaze.com/shows/${ID}`,
     {
-      method: "GET"
-    }
+      method: 'GET',
+    },
   );
   if (!response.ok) {
     const message = `An error has occured: ${response.status}`;
@@ -14,4 +14,5 @@ export async function getShowDetails(ID) {
 }
 
 export async function getShows() {
+  // To be implemented
 }

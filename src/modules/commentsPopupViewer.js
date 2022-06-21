@@ -1,19 +1,19 @@
-import {getShowDetails} from './tvmazeAPI.js'
+import { getShowDetails } from './tvmazeAPI.js';
 
 function getGenresString(genres) {
-    let string = '';
-    genres.forEach(element => {
-        string += ' | ' + element;
-    });
-    return string.substring(3)
+  let string = '';
+  genres.forEach((element) => {
+    string += ` | ${element}`;
+  });
+  return string.substring(3);
 }
 
 export async function showCommentsPopUp(showID) {
-    const data = await getShowDetails(showID)
-    const popUpElement = document.createElement("section")
-    popUpElement.className = "popup";
-    popUpElement.id="comments-popup";
-    popUpElement.innerHTML = `
+  const data = await getShowDetails(showID);
+  const popUpElement = document.createElement('section');
+  popUpElement.className = 'popup';
+  popUpElement.id = 'comments-popup';
+  popUpElement.innerHTML = `
     <i id="close-popup-icon"></i>
     <img
       src="${data.image.original}"
@@ -29,11 +29,10 @@ export async function showCommentsPopUp(showID) {
         <a href="http://www.cbs.com/shows/under-the-dome/">www.cbs.com</a>
       </li>
     </ul>
-    `
-    document.querySelector('main').appendChild(popUpElement);
+    `;
+  document.querySelector('main').appendChild(popUpElement);
 }
 
 export function hideCommentsPopUp() {
-    console.log('Hiding popup')
-    document.querySelector('.popup').remove();
+  document.querySelector('.popup').remove();
 }
