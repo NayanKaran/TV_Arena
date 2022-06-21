@@ -4,7 +4,9 @@ function createCard(data) {
   const image = data._embedded.show.image.original;
 
   const mainContainer = document.querySelector('#home-page');
+
   const cardContainer = document.createElement('div');
+  cardContainer.className = 'card';
 
   const titleLikesContainer = document.createElement('div');
   titleLikesContainer.classList.add('socials');

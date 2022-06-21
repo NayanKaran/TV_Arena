@@ -10,6 +10,7 @@ body {
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
 }
 
 .header {
@@ -81,6 +82,14 @@ body {
 .card-img {
   width: 360px;
   height: 420px;
+  transition-property: all;
+  transition-duration: 0.5s;
+  border-radius: 5%;
+}
+
+.card-img:hover {
+  width: 350px;
+  height: 400px;
 }
 
 .likes {
@@ -102,4 +111,19 @@ body {
 .count-likes {
   display: flex;
   justify-content: end;
+}
+
+.comments {
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+}
+
+.comments:hover {
+  background-color: #3595da;
+  color: #fff;
+}
+
+.socials p {
+  font-size: 16px;
 }
