@@ -1,2 +1,4 @@
 import './style.css';
-import './modules/commentsPopupController.js';
+import addEventListnersToTheCommentsButtons from './modules/commentsPopupController.js';
+
+addEventListnersToTheCommentsButtons();
