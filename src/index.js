@@ -1,6 +1,4 @@
 import './style.css';
-import createCard from './modules/createCardUI.js';
+import displayData from './modules/displayCards.js';
 
-for (let i = 0; i < 11; i += 1) {
-  createCard();
-}
+displayData();

@@ -1,4 +1,8 @@
-function createCard() {
+/* eslint-disable no-underscore-dangle */
+
+function createCard(data) {
+  const image = data._embedded.show.image.original;
+
   const mainContainer = document.querySelector('#home-page');
   const cardContainer = document.createElement('div');
 
@@ -7,9 +11,10 @@ function createCard() {
 
   const cardImg = document.createElement('img');
   cardImg.classList.add('card-img');
+  cardImg.setAttribute('src', image);
 
   const title = document.createElement('p');
-  title.textContent = 'Title';
+  title.textContent = data.name;
 
   const likes = document.createElement('i');
   likes.setAttribute('class', 'fa-regular fa-heart');
@@ -22,6 +27,7 @@ function createCard() {
   const comment = document.createElement('button');
   comment.classList.add('comments');
   comment.textContent = 'Comments';
+  comment.id = `comments-${data._embedded.show.id}`;
 
   titleLikesContainer.append(title, likes);
   cardContainer.append(cardImg, titleLikesContainer, countLikes, comment);
