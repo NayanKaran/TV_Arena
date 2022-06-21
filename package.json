@@ -35,6 +35,7 @@
     "html-webpack-plugin": "^5.5.0",
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^28.1.1",
+    "jest-fetch-mock": "^3.0.3",
     "jest-localstorage-mock": "^2.4.21",
     "jsdom": "^20.0.0",
     "style-loader": "^3.3.1",
