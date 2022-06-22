@@ -4,7 +4,7 @@ import displayLikes from './getLikes.js';
 import postData from './postLikes.js';
 
 export const getData = async () => {
-  const response = await fetch('https://api.tvmaze.com/schedule/web?date=2020-06-21&country=US');
+  const response = await fetch('https://api.tvmaze.com/schedule/web?date=2019-06-21&country=US');
   const movies = response.json();
   return movies;
 };
