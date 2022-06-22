@@ -146,6 +146,7 @@ body {
 }
 
 #comment-form {
+  padding-top: 8px;
   display: flex;
   flex-direction: column;
   margin: auto;
