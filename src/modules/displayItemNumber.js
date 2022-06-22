@@ -1,4 +1,4 @@
-import { getData } from './displayCards';
+import { getData } from './displayCards.js';
 
 const itemNumber = async () => {
   let movies = [];
