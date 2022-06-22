@@ -15,6 +15,26 @@ export async function getComments(showID) {
   }
 }
 
-export function postComment() {
-  // to be implemented
+export async function postComment(showId, name, comment) {
+  const response = await fetch(
+    `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/comments`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "item_id": showId,
+        "username": name,
+        "comment": comment
+      })
+    },
+  );
+  const reponseText = await response.text(); 
+  console.log(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/comments`, JSON.stringify({
+    "item_id": showId,
+    "username": name,
+    "comment": comment
+  }), reponseText)
+  return reponseText;
 }
