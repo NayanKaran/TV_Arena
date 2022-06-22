@@ -1,2 +1,4 @@
 import './style.css';
-import './modules/commentsPopupController.js';
+import displayData from './modules/displayCards.js';
+
+displayData();
