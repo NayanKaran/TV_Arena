@@ -1,18 +1,21 @@
 const appID = 'Ma3sHwXO14HbNtIMnTiR';
 
+export function getNumberOfComments(comments) {
+  return comments.length;
+}
+
 export async function getComments(showID) {
-  try {
-    const response = await fetch(
-      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/comments?item_id=${showID}`,
-      {
-        method: 'GET',
-      },
-    );
-    const showDetails = await response.json();
-    return showDetails;
-  } catch (error) {
+  const response = await fetch(
+    `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/comments?item_id=${showID}`,
+    {
+      method: 'GET',
+    },
+  );
+  if (!response.ok) {
     return [];
   }
+  const showDetails = await response.json();
+  return showDetails;
 }
 
 export async function postComment(showId, name, comment) {
