@@ -24,15 +24,15 @@ function createCard(data) {
 
   const countLikes = document.createElement('p');
   countLikes.classList.add('count-likes');
-  countLikes.textContent = '5 Likes';
+  countLikes.id = data._embedded.show.id;
 
   const comment = document.createElement('button');
   comment.classList.add('comments');
   comment.textContent = 'Comments';
   comment.id = `comments-${data._embedded.show.id}`;
 
-  titleLikesContainer.append(title, likes);
-  cardContainer.append(cardImg, titleLikesContainer, countLikes, comment);
+  titleLikesContainer.append(title, likes, countLikes);
+  cardContainer.append(cardImg, titleLikesContainer, comment);
   mainContainer.appendChild(cardContainer);
 }
 
