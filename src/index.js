@@ -1,4 +1,4 @@
 import './style.css';
-import addEventListnersToTheCommentsButtons from './modules/commentsPopupController.js';
+import displayData from './modules/displayCards.js';
 
-addEventListnersToTheCommentsButtons();
+displayData();

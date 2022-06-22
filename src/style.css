@@ -6,14 +6,20 @@
 body {
   background-image: url('./images/bg-desktop.jpg');
   background-repeat: no-repeat;
-  padding-top: 24px;
+  color: #fff;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 64px;
+  padding: 24px 64px;
+  margin-bottom: 24px;
+  background-color: rgba(53, 149, 218, 0.2);
 }
 
 .heading {
@@ -40,6 +46,7 @@ body {
 
 .list-item a:hover {
   color: #007aff;
+  transition-timing-function: ease-in-out;
 }
 
 .nav {
@@ -118,4 +125,62 @@ body {
 
 #comments-popup > ul > li > span {
   font-weight: bolder;
+
+#home-page {
+  display: grid;
+  grid-template-columns: 360px 360px 360px;
+  gap: 24px;
+  justify-content: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-img {
+  width: 360px;
+  height: 420px;
+  transition-property: all;
+  transition-duration: 0.5s;
+  border-radius: 5%;
+}
+
+.card-img:hover {
+  width: 350px;
+  height: 400px;
+}
+
+.likes {
+  color: white;
+}
+
+.likes:active {
+  color: red;
+}
+
+.socials {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.count-likes {
+  display: flex;
+  justify-content: end;
+}
+
+.comments {
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+}
+
+.comments:hover {
+  background-color: #3595da;
+  color: #fff;
+}
+
+.socials p {
+  font-size: 16px;
 }
