@@ -21,20 +21,15 @@ export async function postComment(showId, name, comment) {
     {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        "item_id": showId,
-        "username": name,
-        "comment": comment
-      })
+        item_id: showId,
+        username: name,
+        comment,
+      }),
     },
   );
-  const reponseText = await response.text(); 
-  console.log(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/comments`, JSON.stringify({
-    "item_id": showId,
-    "username": name,
-    "comment": comment
-  }), reponseText)
+  const reponseText = await response.text();
   return reponseText;
 }

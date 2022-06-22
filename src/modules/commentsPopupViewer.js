@@ -1,8 +1,8 @@
-import { getShowDetails } from "./tvmazeAPI.js";
-import { getComments } from "./involvementAPI.js";
+import { getShowDetails } from './tvmazeAPI.js';
+import { getComments } from './involvementAPI.js';
 
 function getGenresString(genres) {
-  let string = "";
+  let string = '';
   genres.forEach((element) => {
     string += ` | ${element}`;
   });
@@ -10,7 +10,7 @@ function getGenresString(genres) {
 }
 
 function getListElements(comments) {
-  let innerHTML = "";
+  let innerHTML = '';
   if (comments.length) {
     comments.forEach((comment) => {
       innerHTML += `<li><span>${comment.creation_date} ${comment.username}: </span>${comment.comment}</li>`;
@@ -23,18 +23,17 @@ function getListElements(comments) {
 
 export async function updateCommentList(showID) {
   const comments = await getComments(showID);
-  document.getElementById('comments-header').innerText = `Comments(${comments.length ? comments.length : "0"})`
-  document.getElementById('comment-list').innerHTML = `${getListElements(comments)}`
+  document.getElementById('comments-header').innerText = `Comments(${comments.length ? comments.length : '0'})`;
+  document.getElementById('comment-list').innerHTML = `${getListElements(comments)}`;
 }
 
 export async function showCommentsPopUp(showID) {
-  if (document.querySelector(".popup"))
-    document.querySelector(".popup").remove();
+  if (document.querySelector('.popup')) document.querySelector('.popup').remove();
   const data = await getShowDetails(showID);
   {
-    const popUpElement = document.createElement("section");
-    popUpElement.className = "popup";
-    popUpElement.id = "comments-popup";
+    const popUpElement = document.createElement('section');
+    popUpElement.className = 'popup';
+    popUpElement.id = 'comments-popup';
     popUpElement.innerHTML = `
     <i id="close-popup-icon"></i>
     <img
@@ -53,10 +52,10 @@ export async function showCommentsPopUp(showID) {
     </ul>
     `;
     {
-      const commentsSectionElement = document.createElement("section");
+      const commentsSectionElement = document.createElement('section');
       const comments = await getComments(showID);
       commentsSectionElement.innerHTML = `
-    <h3 id="comments-header">Comments(${comments.length ? comments.length : "0"})</h3>
+    <h3 id="comments-header">Comments(${comments.length ? comments.length : '0'})</h3>
     <ul id="comment-list">
       ${getListElements(comments)}
     </ul>
@@ -64,7 +63,7 @@ export async function showCommentsPopUp(showID) {
       popUpElement.appendChild(commentsSectionElement);
     }
     {
-      const addCommentSectionElement = document.createElement("section");
+      const addCommentSectionElement = document.createElement('section');
       addCommentSectionElement.id = 'add-comment-section';
       addCommentSectionElement.innerHTML = `
       <h3>Add a Comment</h3>
@@ -73,13 +72,13 @@ export async function showCommentsPopUp(showID) {
         <textarea name="comment" id="comment-text" cols="30" rows="10" placeholder="Your insights" required></textarea><br>
         <button type="submit" id="comment-button">Comment</button>
       </form>
-      `
+      `;
       popUpElement.appendChild(addCommentSectionElement);
     }
-    document.querySelector("main").appendChild(popUpElement);
+    document.querySelector('main').appendChild(popUpElement);
   }
 }
 
 export function hideCommentsPopUp() {
-  document.querySelector(".popup").remove();
+  document.querySelector('.popup').remove();
 }
