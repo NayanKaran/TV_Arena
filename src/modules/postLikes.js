@@ -12,6 +12,7 @@ const postData = () => {
         const heart = likesCount.id;
         likesCount.textContent = Number(likesCount.textContent) + 1;
 
+
         const response = await fetch(apiUrl, {
           method: 'POST',
           headers: {
@@ -21,11 +22,13 @@ const postData = () => {
             item_id: heart,
           }),
         });
+
         item.classList.add('liked');
         const responseMessage = await response.text();
         return responseMessage;
       };
       if (!item.classList.contains('liked')) postInfo();
+
     });
   });
 };
