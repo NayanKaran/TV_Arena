@@ -7,10 +7,13 @@ const getLikes = async () => {
 
 const displayLikes = async () => {
   const likes = await getLikes();
+  console.log(likes)
   likes.forEach((item) => {
-    const likespara = document.getElementById(`${item.item_id}`);
-    if (item.item_id) {
-      likespara.textContent = `${item.likes}`;
+    const likespara = document.getElementById(item.item_id);
+    console.log(item.item_id)
+    if (likespara) {
+        
+      likespara.textContent = item.likes;
     }
   });
 };

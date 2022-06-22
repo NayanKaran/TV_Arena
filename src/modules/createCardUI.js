@@ -24,7 +24,7 @@ function createCard(data) {
 
   const countLikes = document.createElement('p');
   countLikes.classList.add('count-likes');
-  countLikes.id = data._embedded.show.id;
+  countLikes.id = `${data._embedded.show.id}`;
 
   const comment = document.createElement('button');
   comment.classList.add('comments');
