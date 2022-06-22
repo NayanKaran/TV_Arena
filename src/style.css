@@ -70,13 +70,16 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
   top: 32px;
   left: 0;
   right: 0;
-  bottom: 0;
-  background-color: white;
+  bottom: 32px;
+  background-color: black;
+  color: white;
   z-index: 2;
+  overflow-y: scroll;
+  height: auto;
+  box-sizing: border-box;
 }
 
 #close-popup-icon {
@@ -125,16 +128,40 @@ body {
 #comments-popup > section > h3 {
   margin: 16px auto;
   font-size: x-large;
-  width: min-content;
+  width: max-content;
 }
 
 #comments-popup > section > ul {
-  padding: 0;
   margin: 0;
   list-style: none;
-  padding-left: 32px;
+  padding: 0 32px;
 }
 
 #comments-popup > section > ul > li {
   padding: 8px;
+}
+
+#add-comment-section {
+  padding: 0 32px;
+}
+
+#comment-form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 400px;
+}
+
+#comment-user {
+  padding: 12px;
+}
+
+#comment-text {
+  padding: 12px;
+}
+
+#comment-button {
+  padding: 12px;
+  width: fit-content;
+  margin-left: auto;
 }
