@@ -11,7 +11,6 @@ const displayLikes = async () => {
     const likespara = document.getElementById(item.item_id);
     if (likespara) {
       likespara.textContent = item.likes;
-
     }
   });
 };
