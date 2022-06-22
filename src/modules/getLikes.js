@@ -6,4 +6,13 @@ const getLikes = async()=> {
     return data
 }
 
-export default getLikes;
+const displayLikes = async()=>{
+    let likes = await getLikes();
+    
+    likes.forEach(item =>{
+        const likespara = document.getElementById(`${item.item_id}`)
+        likespara.textContent = item.likes + ' Likes';
+    })
+}
+
+export default displayLikes;

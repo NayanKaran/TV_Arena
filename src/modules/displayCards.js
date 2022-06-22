@@ -1,6 +1,6 @@
 import createCard from './createCardUI.js';
 import addEventListnersToTheCommentsButtons from './commentsPopupController.js';
-import getLikes from './getLikes.js';
+import displayLikes from './getLikes.js';
 
 
 const getData = async () => {
@@ -16,14 +16,9 @@ const displayData = async () => {
   data.forEach((card) => {
     createCard(card);
   });
+  
+  displayLikes();
   addEventListnersToTheCommentsButtons();
 };
-
-const displayLikes = async()=>{
-    let likes = await getLikes();
-    const likeId = document.querySelectorAll('.count-likes')
-    
-}
-displayLikes()
 
 export default displayData;
