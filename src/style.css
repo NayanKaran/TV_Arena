@@ -69,6 +69,63 @@ body {
   background-color: #007aff;
 }
 
+.popup {
+  padding: 32px;
+  max-width: 600px;
+  margin: auto;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  top: 32px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  z-index: 2;
+}
+
+#close-popup-icon {
+  margin: auto;
+  width: 32px;
+  height: 32px;
+  background-image: url(./images/icons/close.svg);
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 48px;
+  right: 32px;
+  cursor: pointer;
+}
+
+#comments-popup > img {
+  width: 400px;
+  align-self: center;
+  padding-top: 16px;
+}
+
+#comments-popup > h2 {
+  align-self: center;
+}
+
+#comments-popup > ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: max-content;
+  align-self: center;
+}
+
+#comments-popup > ul > li {
+  padding: 8px;
+}
+
+#comments-popup > ul > li > span {
+  font-weight: bolder;
+
 #home-page {
   display: grid;
   grid-template-columns: 360px 360px 360px;
