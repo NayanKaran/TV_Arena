@@ -4,7 +4,7 @@
 }
 
 body {
-  background-image: url('./images/bg-desktop.jpg');
+  background-image: url("./images/bg-desktop.jpg");
   background-repeat: no-repeat;
   padding-top: 24px;
 }
@@ -122,9 +122,13 @@ body {
   font-weight: bolder;
 }
 
-#comments-popup > section > h3 {margin: 16px auto;font-size: x-large;width: min-content;}
+#comments-popup > section > h3 {
+  margin: 16px auto;
+  font-size: x-large;
+  width: min-content;
+}
 
-#comments-popup > section > ul{
+#comments-popup > section > ul {
   padding: 0;
   margin: 0;
   list-style: none;

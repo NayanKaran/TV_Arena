@@ -1,5 +1,5 @@
 import { getShowDetails } from './tvmazeAPI.js';
-import {getComments} from './involvementAPI.js'
+import { getComments } from './involvementAPI.js';
 
 function getGenresString(genres) {
   let string = '';
@@ -10,14 +10,12 @@ function getGenresString(genres) {
 }
 
 function getListElements(comments) {
-  let innerHTML = ''
+  let innerHTML = '';
   if (comments.length) {
-    comments.forEach(comment=>{
-      innerHTML+=`<li><span>${comment.creation_date} ${comment.username}: </span>${comment.comment}</li>`
-    })
-  }
-  else
-    innerHTML += '<li>Be the first to Comment!</li>'
+    comments.forEach((comment) => {
+      innerHTML += `<li><span>${comment.creation_date} ${comment.username}: </span>${comment.comment}</li>`;
+    });
+  } else { innerHTML += '<li>Be the first to Comment!</li>'; }
   return innerHTML;
 }
 
@@ -45,14 +43,13 @@ export async function showCommentsPopUp(showID) {
     `;
   document.querySelector('main').appendChild(popUpElement);
   const commentsSectionElement = document.createElement('section');
-  console.log(showID)
-  const comments = await getComments(showID)
+  const comments = await getComments(showID);
   commentsSectionElement.innerHTML = `
   <h3>Comments(${comments.length ? comments.length : '0'})</h3>
   <ul>
     ${getListElements(comments)}
   </ul>
-  `
+  `;
   popUpElement.appendChild(commentsSectionElement);
 }
 
