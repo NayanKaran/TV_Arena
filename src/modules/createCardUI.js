@@ -31,8 +31,8 @@ function createCard(data) {
   comment.textContent = 'Comments';
   comment.id = `comments-${data._embedded.show.id}`;
 
-  titleLikesContainer.append(title, likes);
-  cardContainer.append(cardImg, titleLikesContainer, countLikes, comment);
+  titleLikesContainer.append(title, likes, countLikes);
+  cardContainer.append(cardImg, titleLikesContainer, comment);
   mainContainer.appendChild(cardContainer);
 }
 

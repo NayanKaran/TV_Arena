@@ -156,11 +156,10 @@ body {
 }
 
 .likes {
-  color: white;
-}
-
-.likes:active {
   color: red;
+  margin-left: auto;
+  align-self: center;
+  margin-right: 4px;
 }
 
 .socials {
@@ -173,7 +172,7 @@ body {
 
 .count-likes {
   display: flex;
-  justify-content: end;
+  justify-self: end;
 }
 
 .comments {
