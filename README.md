@@ -36,7 +36,7 @@ To get a local copy up and running follow these simple example steps.
 
 - GitHub: [@NayanKaran](https://github.com/NayanKaran)
 - Twitter: [@bapidebabrata](https://twitter.com/bapidebabrata)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/debabrata-mandal-83461696/)
+- LinkedIn: [debabrata-mandal-83461696](https://www.linkedin.com/in/debabrata-mandal-83461696/)
 
 
 👤 **Wale Olapetan**
