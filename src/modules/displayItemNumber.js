@@ -1,8 +1,5 @@
-import { getData } from './displayCards.js';
-
-const itemNumber = async () => {
-  let movies = [];
-  movies = await getData();
+const itemNumber = async (data) => {
+  let movies = data;
   const today = document.querySelector('.list').firstElementChild;
   today.textContent = `Today (${movies.length})`;
 };

@@ -2,16 +2,14 @@ import createCard from './createCardUI.js';
 import addEventListnersToTheCommentsButtons from './commentsPopupController.js';
 import displayLikes from './getLikes.js';
 import postData from './postLikes.js';
-
-export const getData = async () => {
-  const response = await fetch('https://api.tvmaze.com/schedule/web?date=2020-06-21&country=US');
-  const movies = response.json();
-  return movies;
-};
+import {getShowsInfo} from './tvmazeAPI.js';
+import itemNumber from './displayItemNumber.js';
 
 export const displayData = async () => {
   let data = [];
-  data = await getData();
+  data = await getShowsInfo();
+
+  itemNumber(data);
 
   data.forEach((card) => {
     createCard(card);

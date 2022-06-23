@@ -31,7 +31,7 @@ export default function addEventListnersToTheCommentsButtons() {
             formEvent.target.elements.name.value,
             formEvent.target.elements.comment.value,
           );
-          await updateCommentList(getShowID(event.target.id));
+          await updateCommentList(formEvent.target.elements.name.value, formEvent.target.elements.comment.value);
           formEvent.target.reset();
           formEvent.target.elements['comment-button'].disabled = false;
         });
