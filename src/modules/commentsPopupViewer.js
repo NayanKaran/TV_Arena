@@ -1,12 +1,10 @@
-import { getShowDetails } from './tvmazeAPI.js';
-import { getComments } from './involvementAPI.js';
+/* eslint-disable no-underscore-dangle */
 
-function getGenresString(genres) {
-  let string = '';
-  genres.forEach((element) => {
-    string += ` | ${element}`;
-  });
-  return string.substring(3);
+import { data } from './tvmazeAPI.js';
+import { getComments, getNumberOfComments } from './involvementAPI.js';
+
+function getShowdata(episodeId) {
+  return data.movies.find((episode) => episode.id === Number(episodeId));
 }
 
 function getListElements(comments) {
@@ -21,15 +19,18 @@ function getListElements(comments) {
   return innerHTML;
 }
 
-export async function updateCommentList(showID) {
-  const comments = await getComments(showID);
-  document.getElementById('comments-header').innerText = `Comments(${comments.length ? comments.length : '0'})`;
-  document.getElementById('comment-list').innerHTML = `${getListElements(comments)}`;
+export async function updateCommentList(name, comment) {
+  document.getElementById('comments-header').innerText = `Comments(${getNumberOfComments()})`;
+  const commentElement = document.createElement('li');
+  commentElement.innerHTML = `<span>${new Date()
+    .toISOString()
+    .substring(0, 10)} ${name}: </span>${comment}`;
+  document.getElementById('comment-list').appendChild(commentElement);
 }
 
-export async function showCommentsPopUp(showID) {
-  if (document.querySelector('.popup')) document.querySelector('.popup').remove();
-  const data = await getShowDetails(showID);
+export async function showCommentsPopUp(episodeId) {
+  const episode = getShowdata(episodeId);
+  if (document.querySelector('.popup')) { document.querySelector('.popup').remove(); }
   {
     const popUpElement = document.createElement('section');
     popUpElement.className = 'popup';
@@ -37,31 +38,34 @@ export async function showCommentsPopUp(showID) {
     popUpElement.innerHTML = `
     <i id="close-popup-icon"></i>
     <img
-      src="${data.image.original}"
-      alt="${data.name} Banner"
+      src="${episode._embedded.show.image.original}" 
+      alt="${episode.name} Banner"
     />
-    <h2>${data.name}</h2>
+    <h2>${episode.name}</h2>
     <ul>
-      <li><span>Genres: </span>${getGenresString(data.genres)}</li>
-      <li><span>Created by: </span>Stephen King</li>
-      <li><span>Network: </span>CBS</li>
-      <li>
-        <span>Official site: </span>
-        <a href="http://www.cbs.com/shows/under-the-dome/">www.cbs.com</a>
-      </li>
+      <li><span>Air Date: </span>${
+  episode.airdate ? episode.airdate : 'N/A'
+}</li>
+      <li><span>Air Time: </span>${
+  episode.airtime ? episode.airtime : 'N/A'
+}</li>
+      <li><span>Runtime: </span>${
+  episode.runtime ? episode.runtime : 'N/A'
+}</li>
+      <li><span>Rating: </span>${
+  episode.rating.average ? episode.rating.average : 'N/A'
+}</li>
     </ul>
     `;
-    {
-      const commentsSectionElement = document.createElement('section');
-      const comments = await getComments(showID);
-      commentsSectionElement.innerHTML = `
-    <h3 id="comments-header">Comments(${comments.length ? comments.length : '0'})</h3>
+    document.querySelector('main').appendChild(popUpElement);
+    const commentsSectionElement = document.createElement('section');
+    commentsSectionElement.innerHTML = `
+    <h3 id="comments-header">Comments</h3>
     <ul id="comment-list">
-      ${getListElements(comments)}
+      <li id='add-comment-message'>Fetching comments from server...</li>
     </ul>
     `;
-      popUpElement.appendChild(commentsSectionElement);
-    }
+    popUpElement.appendChild(commentsSectionElement);
     {
       const addCommentSectionElement = document.createElement('section');
       addCommentSectionElement.id = 'add-comment-section';
@@ -75,7 +79,15 @@ export async function showCommentsPopUp(showID) {
       `;
       popUpElement.appendChild(addCommentSectionElement);
     }
-    document.querySelector('main').appendChild(popUpElement);
+    const comments = await getComments(episodeId);
+    commentsSectionElement.innerHTML = `
+      <h3 id="comments-header">Comments(${
+  comments.length ? comments.length : '0'
+})</h3>
+      <ul id="comment-list">
+        ${getListElements(comments)}
+      </ul>
+      `;
   }
 }
 

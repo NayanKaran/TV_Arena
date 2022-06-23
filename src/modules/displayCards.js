@@ -2,17 +2,15 @@ import createCard from './createCardUI.js';
 import addEventListnersToTheCommentsButtons from './commentsPopupController.js';
 import displayLikes from './getLikes.js';
 import postData from './postLikes.js';
+import { getShowsInfo } from './tvmazeAPI.js';
+import itemNumber from './displayItemNumber.js';
 
-export const getData = async (url) => {
-  const response = await fetch(url);
-  const movies = response.json();
-  return movies;
-};
-
-export const displayData = async () => {
-  const apiUrl = `https://api.tvmaze.com/schedule/web?date=${new Date().toISOString().slice(0, 10)}&country=US`;
+const displayData = async () => {
   let data = [];
-  data = await getData(apiUrl);
+  data = await getShowsInfo();
+
+  itemNumber(data);
+
   data.forEach((card) => {
     createCard(card);
   });
@@ -27,3 +25,5 @@ export const displayData = async () => {
   todayText.innerHTML = `Today (${cards.length})`;
   today.append(todayText);
 };
+
+export default displayData;

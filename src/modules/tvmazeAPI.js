@@ -1,3 +1,5 @@
+export const data = {};
+
 export async function getShowDetails(ID) {
   const response = await fetch(
     `https://api.tvmaze.com/shows/${ID}`,
@@ -13,6 +15,9 @@ export async function getShowDetails(ID) {
   return showDetails;
 }
 
-export async function getShows() {
-  // To be implemented
-}
+export const getShowsInfo = async () => {
+  const response = await fetch('https://api.tvmaze.com/schedule/web?date=2020-06-21&country=US');
+  const movies = await response.json();
+  data.movies = movies;
+  return movies;
+};

@@ -12,7 +12,6 @@ const postData = () => {
         heartIcon.classList.add('fa-solid');
         const heart = likesCount.id;
         likesCount.textContent = Number(likesCount.textContent) + 1;
-
         const response = await fetch(apiUrl, {
           method: 'POST',
           headers: {

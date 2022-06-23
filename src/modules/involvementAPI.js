@@ -1,7 +1,9 @@
 const appID = 'Ma3sHwXO14HbNtIMnTiR';
 
-export function getNumberOfComments(comments) {
-  return comments.length;
+let numberOfComments = 0;
+
+export function getNumberOfComments() {
+  return numberOfComments;
 }
 
 export async function getComments(showID) {
@@ -14,8 +16,9 @@ export async function getComments(showID) {
   if (!response.ok) {
     return [];
   }
-  const showDetails = await response.json();
-  return showDetails;
+  const comments = await response.json();
+  numberOfComments = comments.length;
+  return comments;
 }
 
 export async function postComment(showId, name, comment) {
@@ -33,6 +36,9 @@ export async function postComment(showId, name, comment) {
       }),
     },
   );
-  const reponseText = await response.text();
-  return reponseText;
+  const responseText = await response.text();
+  if (responseText === 'Created') {
+    numberOfComments += 1;
+  }
+  return responseText;
 }
