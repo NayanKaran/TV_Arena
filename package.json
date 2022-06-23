@@ -7,7 +7,7 @@
     "test": "jest --coverage",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "start": "webpack serve --open",
+    "start": "webpack serve --mode development --open",
     "watch": "webpack --mode development --config webpack.config.js --watch",
     "deploy": "webpack --mode production && gh-pages -d dist"
   },
@@ -56,6 +56,7 @@
     "resetMocks": false,
     "setupFiles": [
       "jest-localstorage-mock"
-    ]
+    ],
+    "testEnvironment": "jsdom"
   }
 }

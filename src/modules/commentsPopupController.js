@@ -32,6 +32,7 @@ export default function addEventListnersToTheCommentsButtons() {
             formEvent.target.elements.comment.value,
           );
           await updateCommentList(
+            getShowID(event.target.id),
             formEvent.target.elements.name.value,
             formEvent.target.elements.comment.value,
           );

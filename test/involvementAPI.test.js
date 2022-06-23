@@ -14,6 +14,6 @@ describe('Testing involvementAPI', () => {
     const comments = await getComments('testID');
     await postComment('testID', 'John', 'Great!');
     await postComment('testID', 'Wale', 'Awesome!');
-    expect(comments.length + 2).toBe(getNumberOfComments());
+    expect(comments.length + 2).toBe(getNumberOfComments('testID'));
   });
 });
