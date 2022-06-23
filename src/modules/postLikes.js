@@ -1,15 +1,17 @@
 const postData = () => {
   const apiUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/a2tSbPCwHIrhAyfjwKEq/likes';
   const likespara = document.querySelectorAll('.likes');
+
   likespara.forEach((item) => {
     item.addEventListener('click', () => {
       const postInfo = async () => {
-        const newVariable = item.nextElementSibling;
-        const heartIcon = newVariable.previousElementSibling;
+        const likesCount = item.nextElementSibling;
+        const heartIcon = likesCount.previousElementSibling;
+        item.classList.add('liked');
         heartIcon.classList.remove('fa-regular');
         heartIcon.classList.add('fa-solid');
-        const heart = newVariable.id;
-        newVariable.textContent = Number(newVariable.textContent) + 1;
+        const heart = likesCount.id;
+        likesCount.textContent = Number(likesCount.textContent) + 1;
 
         const response = await fetch(apiUrl, {
           method: 'POST',
@@ -23,7 +25,7 @@ const postData = () => {
         const responseMessage = await response.text();
         return responseMessage;
       };
-      postInfo();
+      if (!item.classList.contains('liked')) postInfo();
     });
   });
 };

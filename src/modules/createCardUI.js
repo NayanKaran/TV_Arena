@@ -24,12 +24,12 @@ function createCard(data) {
 
   const countLikes = document.createElement('p');
   countLikes.classList.add('count-likes');
-  countLikes.id = data._embedded.show.id;
+  countLikes.id = `${data.id}`;
 
   const comment = document.createElement('button');
   comment.classList.add('comments');
   comment.textContent = 'Comments';
-  comment.id = `comments-${data._embedded.show.id}`;
+  comment.id = `comments-${data.id}`;
 
   titleLikesContainer.append(title, likes, countLikes);
   cardContainer.append(cardImg, titleLikesContainer, comment);
