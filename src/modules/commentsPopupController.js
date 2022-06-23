@@ -5,11 +5,9 @@ import {
 } from './commentsPopupViewer.js';
 import { postComment } from './involvementAPI.js';
 
-function getShowID(id) {
-  return id.substring(9);
-}
+const getShowID = (id) => id.substring(9);
 
-export default function addEventListnersToTheCommentsButtons() {
+const addEventListnersToTheCommentsButtons = () => {
   const comments = document.querySelectorAll('.comments');
   comments.forEach((el) => {
     el.addEventListener('click', async (event) => {
@@ -41,4 +39,6 @@ export default function addEventListnersToTheCommentsButtons() {
         });
     });
   });
-}
+};
+
+export default addEventListnersToTheCommentsButtons;

@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 
-function createCard(data) {
+const createCard = (data) => {
   const image = data._embedded.show.image.original;
 
   const mainContainer = document.querySelector('#home-page');
@@ -34,6 +34,6 @@ function createCard(data) {
   titleLikesContainer.append(title, likes, countLikes);
   cardContainer.append(cardImg, titleLikesContainer, comment);
   mainContainer.appendChild(cardContainer);
-}
+};
 
 export default createCard;
