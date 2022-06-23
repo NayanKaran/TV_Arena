@@ -14,11 +14,16 @@ const displayData = async () => {
   data.forEach((card) => {
     createCard(card);
   });
-
   displayLikes();
   addEventListnersToTheCommentsButtons();
   postData();
-  return data;
+  const cards = document.querySelectorAll('.card');
+  const today = document.querySelector('.list').firstElementChild;
+  today.classList.add('highlight');
+  today.innerHTML = '';
+  const todayText = document.createElement('a');
+  todayText.innerHTML = `Today (${cards.length})`;
+  today.append(todayText);
 };
 
 export default displayData;
