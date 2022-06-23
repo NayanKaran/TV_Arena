@@ -3,11 +3,9 @@
 import { data } from './tvmazeAPI.js';
 import { getComments, getNumberOfComments } from './involvementAPI.js';
 
-function getShowdata(episodeId) {
-  return data.movies.find((episode) => episode.id === Number(episodeId));
-}
+const getShowdata = (episodeId) => data.movies.find((episode) => episode.id === Number(episodeId));
 
-function getListElements(comments) {
+const getListElements = (comments) => {
   let innerHTML = '';
   if (comments.length) {
     comments.forEach((comment) => {
@@ -17,9 +15,9 @@ function getListElements(comments) {
     innerHTML += "<li id='add-comment-message'>Be the first to Comment!</li>";
   }
   return innerHTML;
-}
+};
 
-export async function updateCommentList(episodeId, name, comment) {
+export const updateCommentList = async (episodeId, name, comment) => {
   if (document.getElementById('add-comment-message')) { document.getElementById('add-comment-message').remove(); }
   document.getElementById('comments-header').innerText = `Comments(${getNumberOfComments(episodeId)})`;
   const commentElement = document.createElement('li');
@@ -27,9 +25,9 @@ export async function updateCommentList(episodeId, name, comment) {
     .toISOString()
     .substring(0, 10)} ${name}: </span>${comment}`;
   document.getElementById('comment-list').appendChild(commentElement);
-}
+};
 
-export async function showCommentsPopUp(episodeId) {
+export const showCommentsPopUp = async (episodeId) => {
   const episode = getShowdata(episodeId);
   if (document.querySelector('.popup')) { document.querySelector('.popup').remove(); }
   {
@@ -90,8 +88,8 @@ export async function showCommentsPopUp(episodeId) {
       </ul>
       `;
   }
-}
+};
 
-export function hideCommentsPopUp() {
+export const hideCommentsPopUp = () => {
   document.querySelector('.popup').remove();
-}
+};
