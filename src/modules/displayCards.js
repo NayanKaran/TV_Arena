@@ -3,14 +3,13 @@ import addEventListnersToTheCommentsButtons from './commentsPopupController.js';
 import displayLikes from './getLikes.js';
 import postData from './postLikes.js';
 import { getShowsInfo } from './tvmazeAPI.js';
-import itemNumber from './displayItemNumber.js';
+import displayItemNumber from './displayItemNumber.js';
 
 const displayData = async () => {
   let data = [];
   data = await getShowsInfo();
 
-  itemNumber(data);
-
+  displayItemNumber();
   data.forEach((card) => {
     createCard(card);
   });

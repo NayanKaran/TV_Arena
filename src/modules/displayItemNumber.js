@@ -1,10 +1,9 @@
+import {getNumberOfItems} from './tvmazeAPI.js'
 
-
-const itemNumber = async (data) => {
-  const movies = data;
+const displayItemNumber = async () => {
+  getNumberOfItems()
   const today = document.querySelector('.list').firstElementChild;
-  today.textContent = `Today (${movies.length})`;
-  return movies.length;
+  today.textContent = `Today (${getNumberOfItems()})`;
 };
 
-export default itemNumber;
+export default displayItemNumber;

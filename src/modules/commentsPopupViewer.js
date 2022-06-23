@@ -19,8 +19,10 @@ function getListElements(comments) {
   return innerHTML;
 }
 
-export async function updateCommentList(name, comment) {
-  document.getElementById('comments-header').innerText = `Comments(${getNumberOfComments()})`;
+export async function updateCommentList(episodeId, name, comment) {
+  if (document.getElementById('add-comment-message'))
+    document.getElementById('add-comment-message').remove();
+  document.getElementById('comments-header').innerText = `Comments(${getNumberOfComments(episodeId)})`;
   const commentElement = document.createElement('li');
   commentElement.innerHTML = `<span>${new Date()
     .toISOString()

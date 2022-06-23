@@ -1,27 +1,28 @@
 const appID = 'Ma3sHwXO14HbNtIMnTiR';
 
-let numberOfComments = 0;
+const numberOfComments = {};
 
-export function getNumberOfComments() {
-  return numberOfComments;
+export function getNumberOfComments(episodeId) {
+  return numberOfComments[episodeId];
 }
 
-export async function getComments(showID) {
+export async function getComments(episodeId) {
   const response = await fetch(
-    `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/comments?item_id=${showID}`,
+    `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/comments?item_id=${episodeId}`,
     {
       method: 'GET',
     },
   );
   if (!response.ok) {
+    numberOfComments[episodeId] = 0;
     return [];
   }
   const comments = await response.json();
-  numberOfComments = comments.length;
+  numberOfComments[episodeId] = comments.length;
   return comments;
 }
 
-export async function postComment(showId, name, comment) {
+export async function postComment(episodeId, name, comment) {
   const response = await fetch(
     `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/comments`,
     {
@@ -30,7 +31,7 @@ export async function postComment(showId, name, comment) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        item_id: showId,
+        item_id: episodeId,
         username: name,
         comment,
       }),
@@ -38,7 +39,7 @@ export async function postComment(showId, name, comment) {
   );
   const responseText = await response.text();
   if (responseText === 'Created') {
-    numberOfComments += 1;
+    numberOfComments[episodeId] += 1;
   }
   return responseText;
 }
