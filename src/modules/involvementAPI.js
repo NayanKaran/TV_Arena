@@ -38,7 +38,7 @@ export async function postComment(showId, name, comment) {
   );
   const responseText = await response.text();
   if (responseText === 'Created') {
-    numberOfComments+=1;
+    numberOfComments += 1;
   }
   return responseText;
 }

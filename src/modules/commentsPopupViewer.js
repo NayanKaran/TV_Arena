@@ -1,12 +1,14 @@
-import { data } from "./tvmazeAPI.js";
-import { getComments, getNumberOfComments } from "./involvementAPI.js";
+/* eslint-disable no-underscore-dangle */
+
+import { data } from './tvmazeAPI.js';
+import { getComments, getNumberOfComments } from './involvementAPI.js';
 
 function getShowdata(episodeId) {
   return data.movies.find((episode) => episode.id === Number(episodeId));
 }
 
 function getListElements(comments) {
-  let innerHTML = "";
+  let innerHTML = '';
   if (comments.length) {
     comments.forEach((comment) => {
       innerHTML += `<li><span>${comment.creation_date} ${comment.username}: </span>${comment.comment}</li>`;
@@ -18,47 +20,45 @@ function getListElements(comments) {
 }
 
 export async function updateCommentList(name, comment) {
-  document.getElementById("comments-header").innerText = `Comments(${getNumberOfComments()})`;
-  const commentElement = document.createElement("li");
+  document.getElementById('comments-header').innerText = `Comments(${getNumberOfComments()})`;
+  const commentElement = document.createElement('li');
   commentElement.innerHTML = `<span>${new Date()
     .toISOString()
     .substring(0, 10)} ${name}: </span>${comment}`;
-  document.getElementById("comment-list").appendChild(commentElement);
+  document.getElementById('comment-list').appendChild(commentElement);
 }
 
 export async function showCommentsPopUp(episodeId) {
-  let episode = getShowdata(episodeId);
-  console.log("Returned this ", episode);
-  if (document.querySelector(".popup"))
-    document.querySelector(".popup").remove();
+  const episode = getShowdata(episodeId);
+  if (document.querySelector('.popup')) { document.querySelector('.popup').remove(); }
   {
-    const popUpElement = document.createElement("section");
-    popUpElement.className = "popup";
-    popUpElement.id = "comments-popup";
+    const popUpElement = document.createElement('section');
+    popUpElement.className = 'popup';
+    popUpElement.id = 'comments-popup';
     popUpElement.innerHTML = `
     <i id="close-popup-icon"></i>
     <img
-      src="${episode._embedded.show.image.original}"
+      src="${episode._embedded.show.image.original}" 
       alt="${episode.name} Banner"
     />
     <h2>${episode.name}</h2>
     <ul>
       <li><span>Air Date: </span>${
-        episode.airdate ? episode.airdate : "N/A"
-      }</li>
+  episode.airdate ? episode.airdate : 'N/A'
+}</li>
       <li><span>Air Time: </span>${
-        episode.airtime ? episode.airtime : "N/A"
-      }</li>
+  episode.airtime ? episode.airtime : 'N/A'
+}</li>
       <li><span>Runtime: </span>${
-        episode.runtime ? episode.runtime : "N/A"
-      }</li>
+  episode.runtime ? episode.runtime : 'N/A'
+}</li>
       <li><span>Rating: </span>${
-        episode.rating.average ? episode.rating.average : "N/A"
-      }</li>
+  episode.rating.average ? episode.rating.average : 'N/A'
+}</li>
     </ul>
     `;
-    document.querySelector("main").appendChild(popUpElement);
-    const commentsSectionElement = document.createElement("section");
+    document.querySelector('main').appendChild(popUpElement);
+    const commentsSectionElement = document.createElement('section');
     commentsSectionElement.innerHTML = `
     <h3 id="comments-header">Comments</h3>
     <ul id="comment-list">
@@ -67,8 +67,8 @@ export async function showCommentsPopUp(episodeId) {
     `;
     popUpElement.appendChild(commentsSectionElement);
     {
-      const addCommentSectionElement = document.createElement("section");
-      addCommentSectionElement.id = "add-comment-section";
+      const addCommentSectionElement = document.createElement('section');
+      addCommentSectionElement.id = 'add-comment-section';
       addCommentSectionElement.innerHTML = `
       <h3>Add a Comment</h3>
       <form id="comment-form">
@@ -82,8 +82,8 @@ export async function showCommentsPopUp(episodeId) {
     const comments = await getComments(episodeId);
     commentsSectionElement.innerHTML = `
       <h3 id="comments-header">Comments(${
-        comments.length ? comments.length : "0"
-      })</h3>
+  comments.length ? comments.length : '0'
+})</h3>
       <ul id="comment-list">
         ${getListElements(comments)}
       </ul>
@@ -92,5 +92,5 @@ export async function showCommentsPopUp(episodeId) {
 }
 
 export function hideCommentsPopUp() {
-  document.querySelector(".popup").remove();
+  document.querySelector('.popup').remove();
 }

@@ -1,5 +1,5 @@
 const itemNumber = async (data) => {
-  let movies = data;
+  const movies = data;
   const today = document.querySelector('.list').firstElementChild;
   today.textContent = `Today (${movies.length})`;
 };
