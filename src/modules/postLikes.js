@@ -7,6 +7,7 @@ const postData = () => {
       const postInfo = async () => {
         const likesCount = item.nextElementSibling;
         const heartIcon = likesCount.previousElementSibling;
+        item.classList.add('liked');
         heartIcon.classList.remove('fa-regular');
         heartIcon.classList.add('fa-solid');
         const heart = likesCount.id;
@@ -21,8 +22,6 @@ const postData = () => {
             item_id: heart,
           }),
         });
-
-        item.classList.add('liked');
         const responseMessage = await response.text();
         return responseMessage;
       };
